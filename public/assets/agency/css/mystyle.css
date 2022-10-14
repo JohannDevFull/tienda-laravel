@@ -1,0 +1,13 @@
+.nav-tienda{
+    background: black !important;
+}
+
+.btn-outline-light-t {
+    color: #0080ff;
+    border-color: #0d6dcd;
+}
+
+.btn-outline-light-t:hover {
+    color: #0080ff;
+    background-color: rgba(33, 37, 41, 0.8);
+}
