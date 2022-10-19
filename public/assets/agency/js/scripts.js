@@ -53,21 +53,190 @@ window.addEventListener('DOMContentLoaded', event => {
 
 });
 
-function login(params){
+
+
+
+
+function login(){
     let email = document.getElementById('email').value;
+    let pass = document.getElementById('pass').value;
+
+    var divisiones = pass.split(" ");
+
+    if (divisiones.length > 2)
+    {
+        alert("Error ingrese contraseña sin espacios")
+        return
+    }
     
     if (email == 'cliente@test.com' || email == 'admin@test.com' ){
-        if (email == 'cliente@test.com'){
-            location.href = "../pages/admin/admin.html";   
+        if (email == 'user@test.com'){
+            location.href = "/pages/admin/admin.html";   
         }
         if (email == 'admin@test.com'){
-            location.href = "../pages/cliente/cliente.html";   
+            axios.post('/auth-ok')
+            .then(function (response) {
+                location.href = '/productos'
+            })
+            .catch(function (error) {
+                // handle error
+                console.log(error);
+            });
+            location.href = "/";   
         }
     }else{
         alert('Credenciales erradas')
     }
+}
 
-
-    
+function logClose(){
+    axios.post('/auth-close')
+    .then(function (response) {
+        location.href = '/inicio'
+    })
+    .catch(function (error) {
+        // handle error
+        console.log(error);
+    });
 }
 // cliente@test.com
+
+function openForm(){
+    let e = document.getElementById('form-producto');
+    e.style.display = 'block' ;
+}
+
+function store(){
+    
+    let nombre = document.getElementById('nombre').value;
+    let precio = document.getElementById('precio').value;
+    let descripcion = document.getElementById('descripcion').value;
+    let url_img = document.getElementById('url_img').value;
+
+    let obj_producto = {
+        nombre:nombre,
+        precio:precio,
+        descripcion:descripcion,
+        url_img:url_img,
+    }
+
+    axios.post('/productos', obj_producto )
+    .then(function (response) {
+        // handle success
+        console.log(response);
+        let e = document.getElementById('form-producto');
+        e.style.display = 'none' ;
+
+    })
+    .catch(function (error) {
+        // handle error
+        console.log(error);
+    });
+}
+
+function update(){
+
+    let id = document.getElementById('id_').value;
+    let nombre = document.getElementById('nombre').value;
+    let precio = document.getElementById('precio').value;
+    let descripcion = document.getElementById('descripcion').value;
+    console.log("RRR",descripcion);
+
+    let url_img = document.getElementById('url_img').value;
+
+    let obj_producto = {
+        nombre:nombre,
+        precio:precio,
+        descripcion:descripcion,
+        url_img:url_img,
+    }
+
+    axios.put('/productos/'+id, obj_producto )
+    .then(function (response) {
+        // handle success
+        console.log(response);
+        let e = document.getElementById('form-producto');
+        e.style.display = 'none' ;
+
+        location.href = '/productos'
+
+    })
+    .catch(function (error) {
+        // handle error
+        console.log(error);
+    });
+}
+
+function editar(id) {
+    // alert("hhh")
+    location.href = "/productos/edit/"+id;  
+}
+
+function destroy(id){
+    axios.delete('/productos/'+id)
+    .then(function (response) {
+        location.href = '/productos'
+    })
+    .catch(function (error) {
+        // handle error
+        console.log(error);
+    });
+}
+
+
+function apiTest() {
+
+
+    const moneda_one = 'USD';
+
+    const options = {
+        method: 'GET',
+        url: `https://api.exchangerate-api.com/v4/latest/${moneda_one}`
+    };
+
+    let mony = getCountryIp();
+    
+    axios.request(options).then( (response) => {
+        
+        console.log("WWW",response.data.rates.USD);
+
+        let precio = document.getElementById('precio').value;
+        
+        let money_country = changeMoney( mony , response );
+        // alert("TTT::"+precio*money_country)
+
+        let value_change = money_country * precio ;
+        
+        document.getElementById('code').innerHTML = mony;
+        document.getElementById('money').innerHTML = value_change;
+
+    }).catch(function (error) {
+        console.error(error);
+    });
+}
+
+function getCountryIp() {
+    
+
+    
+    return 'COP'
+}
+
+function changeMoney(mony , response) {
+    let change;
+    switch (mony)
+    {
+        case 'COP':
+            change = response.data.rates.COP
+        break;
+
+        case 'MEX':
+            change = response.data.rates.MEX
+        break;
+    
+        default:
+
+        break;
+    }
+    return change;
+}

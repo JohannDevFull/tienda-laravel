@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Producto;
 use Illuminate\Http\Request;
 
 class ProductosController extends Controller
@@ -17,16 +18,29 @@ class ProductosController extends Controller
     public function index()
     {
         //
+        $productos = Producto::all();
+
+        return view('admin.productos' , [
+            "productos" => $productos
+        ]);
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Remove the specified resource from storage.
      *
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function edit($id)
     {
         //
+        $producto = Producto::find($id);
+        $productos = Producto::all();
+
+        return view('admin.productos_edit' , [
+            "producto" => $producto,
+            "productos" => $productos,
+        ]);
     }
 
     /**
@@ -38,28 +52,25 @@ class ProductosController extends Controller
     public function store(Request $request)
     {
         //
-    }
+        $request->validate([
+            'nombre'        => 'required',
+            'precio'        => 'required',
+            'descripcion'   => 'required',
+            'url_img'      => 'required'
+        ]);
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
+        $tutorial_a = Producto::create([
+            'nombre'        => $request->nombre,
+            'precio'        => $request->precio,
+            'descripcion'   => $request->descripcion,
+            'url_path'      => $request->url_img
+        ]);
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+        return response()->json([
+            'mesage'    => 'Success',
+            'status'    => '200',
+            'data'      => $tutorial_a
+        ]);
     }
 
     /**
@@ -72,6 +83,26 @@ class ProductosController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $request->validate([
+            'nombre'        => 'required',
+            'precio'        => 'required',
+            'descripcion'   => 'required',
+            'url_img'      => 'required'
+        ]);
+
+        $tutorial_a = Producto::where('id' ,'=', $id )
+        ->update([
+            'nombre'        => $request->nombre,
+            'precio'        => $request->precio,
+            'descripcion'   => $request->descripcion,
+            'url_path'      => $request->url_img
+        ]);
+
+        return response()->json([
+            'mesage'    => 'ok',
+            'status'    => '200',
+            'data'      => $tutorial_a
+        ]);
     }
 
     /**
@@ -83,5 +114,11 @@ class ProductosController extends Controller
     public function destroy($id)
     {
         //
+        $producto = Producto::find($id);
+ 
+        $producto->delete();
+
+        return  "ok delete";
     }
+    
 }

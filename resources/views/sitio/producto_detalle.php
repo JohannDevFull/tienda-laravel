@@ -20,7 +20,7 @@
 
     </head>
 
-    <body id="page-top">
+    <body id="page-top" onload="apiTest()">
         
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-dark fixed-top nav-tienda" id="mainNav">
@@ -51,18 +51,25 @@
         </nav>
         
 
-        <section class="py-5">
+        <section class="py-5 mt-5">
             <div class="container px-4 px-lg-5 my-5">
                 <div class="row gx-4 gx-lg-5 align-items-center">
-                    <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="../img/pantalosSudaderajpg.jpg" alt="Sudadera De Equipo" /></div>
+                    <div class="col-md-6">
+                        <?php echo '<img class="card-img-top mb-5 mb-md-0" src="/'.$producto->url_path.'" alt="Sudadera De Equipo" />' ?>
+                    </div>
                     <div class="col-md-6">
                         <div class="small mb-1">(REF)SKU: BST-498</div>
                         <h1 class="display-5 fw-bolder"><?php echo $producto->nombre ?></h1>
-                        <div class="fs-5 mb-5">
-                            <span class="text-decoration-line-through">$45.00</span>
-                            <span>$40.00</span>
+                        <div class="form-group col-md-12" style="display:none;">
+                            <label for="inputEmail4">id</label>
+                            <?php echo '<input type="text" class="form-control" id="precio" value="'.$producto->precio.'" >' ?>
                         </div>
-                        <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium at dolorem quidem modi. Nam sequi consequatur obcaecati excepturi alias magni, accusamus eius blanditiis delectus ipsam minima ea iste laborum vero?</p>
+                        <div class="fs-5 mb-5">
+                            <span class="text-decoration-line-through">$<?php echo $producto->precio ?></span>
+                            <span id="code">  </span>
+                            <span id="money">  </span>
+                        </div>
+                        <p class="lead"><?php echo $producto->descripcion ?></p>
                         <div class="d-flex">
                             <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 3rem" />
                             <button class="btn btn-outline-dark flex-shrink-0" type="button">
@@ -208,11 +215,14 @@
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
-        <script src="../js/scripts.js"></script>
+        <script src="/assets/agency/js/scripts.js"></script>
         <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
         <!-- * *                               SB Forms JS                               * *-->
         <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
         <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
         <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
     </body>
 </html>

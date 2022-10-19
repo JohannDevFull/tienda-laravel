@@ -29,7 +29,7 @@
             <div class="container">
                 <a class="navbar-brand" href="#page-top">
                     <!-- <img src="assets/img/navbar-logo.svg" alt="..." /> -->
-                    My shoping
+                    Tienda deportiva JSK
                 </a>
                 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -38,11 +38,11 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-                        <li class="nav-item"><a class="nav-link" href="../index.html">Menu</a></li>
-                        <li class="nav-item"><a class="nav-link" href="deals.html">Ofertas</a></li>
-                        <li class="nav-item"><a class="nav-link" href="products.html">Productos</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/inicio">Inicio</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/ofertas">Ofertas</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/tienda">Tienda</a></li>
                         <li class="nav-item">
-                            <a type="button" href="/pages/login.html" class="btn btn-outline-success">Login</a>
+                            <a type="button" href="/login" class="btn btn-outline-success">Login</a>
                         </li>
                         <!-- <li class="nav-item">
                             <button type="button" class="btn btn-outline-info">Registro</button>
@@ -179,22 +179,96 @@
         
         
         <!-- Footer-->
-        <footer class="footer py-4">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-lg-4 text-lg-start">Copyright &copy; Your Website 2022</div>
-                    <div class="col-lg-4 my-3 my-lg-0">
-                        <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                        <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <div class="footer">
+
+            <footer class="text-white text-center text-lg-start bg-dark">
+              <!-- Grid container -->
+              <div class="container p-4">
+                <!--Grid row-->
+                <div class="row mt-4">
+                  <!--Grid column-->
+                  <div class="col-lg-4 col-md-12 mb-4 mb-md-0">
+                    <h5 class="text-uppercase mb-4">Acerca de la compañía</h5>
+          
+                    <p><h7>
+                      Somos una tienda deportiva autenticada desde el 20 de agosto del 2000 y trabajamos
+                      con los mejores productos de colombia y del mundo.
+                    </h7></p>
+          
+                    <div class="mt-4">
+                      <!-- Facebook -->
+                      <a type="button" class="btn btn-floating btn-light btn-lg"><i class="fab fa-facebook-f"></i></a>
+                      <!-- Dribbble -->
+                      <a type="button" class="btn btn-floating btn-light btn-lg"><i class="fab fa-dribbble"></i></a>
+                      <!-- Twitter -->
+                      <a type="button" class="btn btn-floating btn-light btn-lg"><i class="fab fa-twitter"></i></a>
+                      <!-- Google + -->
+                      <a type="button" class="btn btn-floating btn-light btn-lg"><i class="fab fa-google-plus-g"></i></a>
+                      <!-- Linkedin -->
                     </div>
-                    <div class="col-lg-4 text-lg-end">
-                        <a class="link-dark text-decoration-none me-3" href="#!">Privacy Policy</a>
-                        <a class="link-dark text-decoration-none" href="#!">Terms of Use</a>
+                  </div>
+                  <!--Grid column-->
+          
+                  <!--Grid column-->
+                  <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
+                    <h5 class="text-uppercase mb-4 pb-1">buscar algo</h5>
+          
+                    <div class="form-outline form-white mb-4">
+                      <input type="text" id="formControlLg" class="form-control form-control-lg" />
+                      <label class="form-label" for="formControlLg">
+                        Búsqueda</label>
                     </div>
+          
+                    <ul class="fa-ul" style="margin-left: 1.65em;">
+                      <li class="mb-3">
+                        <span class="fa-li"><i class="fas fa-home"></i></span><span class="ms-2">Centro comercial metropolis local 123</span>
+                      </li>
+                      <li class="mb-3">
+                        <span class="fa-li"><i class="fas fa-envelope"></i></span><span class="ms-2">TiendaDeportivajks@gmail.com</span>
+                      </li>
+                      <li class="mb-3">
+                        <span class="fa-li"><i class="fas fa-phone"></i></span><span class="ms-2">+ 48 234 567 88</span>
+                      </li>
+                    </ul>
+                  </div>
+                  <!--Grid column-->
+          
+                  <!--Grid column-->
+                  <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
+                    <h5 class="text-uppercase mb-4">Horario de apertura</h5>
+          
+                    <table class="table text-center text-white">
+                      <tbody class="fw-normal">
+                        <tr>
+                          <td>lunes - viernes:</td>
+                          <td>8am - 10pm</td>
+                        </tr>
+                        <tr>
+                          <td>sabados - domingos:</td>
+                          <td>8am - 5am</td>
+                        </tr>
+                        <tr>
+                          <td>Festivos:</td>
+                          <td>9am - 3pm</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <!--Grid column-->
                 </div>
-            </div>
-        </footer>
+                <!--Grid row-->
+              </div>
+              <!-- Grid container -->
+          
+              <!-- Copyright -->
+              <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+                © 2020 Copyright: Tienda deportiva JKS
+              </div>
+              <!-- Copyright -->
+            </footer>
+        
+        </div>
+
         <!-- Portfolio Modals-->
         <!-- Portfolio item 1 modal popup-->
         <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">

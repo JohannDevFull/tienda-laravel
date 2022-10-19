@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ProductosController;
 use App\Http\Controllers\SitioController;
 use Illuminate\Support\Facades\Route;
 
@@ -14,7 +16,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/',             [SitioController::class, 'inicio'] );
+// Admin -
+Route::get('/',             [AdminController::class, 'index'] );
+Route::post('/auth-ok',      [AdminController::class, 'auth'] );
+Route::post('/auth-close',   [AdminController::class, 'authClose'] );
+
+
+Route::get('/inicio',       [SitioController::class, 'inicio'] );
 
 Route::get('/login',        [SitioController::class, 'login'] );
 Route::get('/ofertas',      [SitioController::class, 'ofertas'] );
@@ -28,10 +36,12 @@ Route::get('/tienda/producto/{id}',       [SitioController::class, 'mostrarProdu
 
 
 
-Route::get('/productos', [UserController::class, 'index']);
-Route::post('/productos', [UserController::class, 'store']);
-Route::put('/productos/{id}', [UserController::class, 'update']);
-Route::delete('/productos/{id}', [UserController::class, 'destroy']);
+Route::get('/productos', [ProductosController::class, 'index']);
+Route::get('/productos/edit/{id}', [ProductosController::class, 'edit']);
+
+Route::post('/productos', [ProductosController::class, 'store']);
+Route::put('/productos/{id}', [ProductosController::class, 'update']);
+Route::delete('/productos/{id}', [ProductosController::class, 'destroy']);
 
 
 

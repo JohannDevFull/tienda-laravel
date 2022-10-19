@@ -73,9 +73,9 @@
 
             <!-- Sidebar Message -->
             <div class="sidebar-card d-none d-lg-flex">
-                <button class="rounded-circle border-0" id="sidebarToggle" onclick="logClose()">
-                    Cerrar session
-                </button>
+                <img class="sidebar-card-illustration mb-2" src="img/undraw_rocket.svg" alt="...">
+                <p class="text-center mb-2"><strong>SB Admin Pro</strong> is packed with premium features, components, and more!</p>
+                <a class="btn btn-success btn-sm" href="https://startbootstrap.com/theme/sb-admin-pro">Upgrade to Pro!</a>
             </div>
 
         </ul>
@@ -259,9 +259,9 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <button class="rounded-circle border-0" id="sidebarToggle" onclick="logClose()">
-                                    Cerrar session
-                                </button>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
+                                <img class="img-profile rounded-circle"
+                                    src="img/undraw_profile.svg">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -329,30 +329,39 @@
                                 <!-- Card Body -->
                                 <div class="card-body">
 
-                                    <div id="form-producto" style="display:none;">
+                                    <div id="form-producto">
                                         
                                         <div class="form-row">
+                                            
+                                            <div class="form-group col-md-12" style="visibility:hidden ;">
+                                                <label for="inputEmail4">id</label>
+                                                <?php echo '<input type="text" class="form-control" id="id_" value="'.$producto->id.'" >' ?>
+                                            </div>
+
                                             <div class="form-group col-md-6">
                                                 <label for="inputEmail4">Nombre producto</label>
-                                                <input type="text" class="form-control" id="nombre">
+                                                <?php echo '<input type="text" class="form-control" id="nombre" value="'.$producto->nombre.'" >' ?>
                                             </div>
                                             <div class="form-group col-md-6">
-                                                <label for="inputPassword4">Precioo</label>
-                                                <input type="text" class="form-control" id="precio">
+                                                <label for="inputPassword4">Precio</label>
+                                                <?php echo '<input type="text" class="form-control" id="precio" value="'.$producto->precio.'" >' ?>
                                             </div>
                                         </div>
 
                                         <div class="form-group">
                                             <label for="inputAddress2">Url img</label>
-                                            <input type="text" class="form-control" id="url_img" placeholder="Apartment, studio, or floor">
+                                            <?php echo '<input type="text" class="form-control" id="url_img" value="'.$producto->url_path.'" >' ?>
                                         </div>
 
                                         <div class="form-group">
                                             <label for="inputAddress2">Descripcion</label>
-                                            <textarea class="form-control" name="descripcion" id="descripcion" cols="30" rows="10"></textarea>
+                                            
+                                            <textarea name="" class="form-control" cols="30" rows="10" id="descripcion" >
+                                            <?php echo $producto->descripcion; ?>
+                                            </textarea>
+      
                                         </div>
-
-                                        <button type="submit" class="btn btn-success" onclick="store()">Guardar</button>
+                                        <button type="submit" class="btn btn-warning" onclick="update()">Actualizar</button>
                                     </div>
 
                                     <table class="table mt-5">
@@ -385,13 +394,12 @@
                                                                 Editar
                                                             </button>'
                                                         ?>
-
+                                                        
                                                         <?php echo '
                                                             <button type="submit" class="btn btn-danger" onclick="destroy('.$key->id.')">
                                                                 Borrar
                                                             </button>'
                                                         ?>
-                                                        
                                                     </td>
                                                 <tr>
                                             <?php 
@@ -407,25 +415,7 @@
 
                     </div>
 
-                    <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                ...
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Understood</button>
-                            </div>
-                            </div>
-                        </div>
-                    </div>
+                  
 
 
                 </div>
@@ -464,7 +454,6 @@
 
     <!-- Custom scripts for all pages-->
     <script src="/assets/sb-admin-2/js/sb-admin-2.min.js"></script>
-    
     <script src="/assets/agency/js/scripts.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>

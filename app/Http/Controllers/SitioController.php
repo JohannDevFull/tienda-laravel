@@ -26,20 +26,13 @@ class SitioController extends Controller
 
     public function productos()
     {
-        return view('sitio.tienda');
-    }
-
-
-
-
-
-    public function test()
-    {
-        # code...
         $productos = Producto::all();
 
-        return view('test_productos',[ "productos" => $productos  ]);
+        return view('sitio.tienda',
+            [ "productos" => $productos  ]
+        );
     }
+
     public function mostrarProductoPorId($id)
     {
         # code...
